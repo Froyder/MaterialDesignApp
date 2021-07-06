@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MaterialDesignApp</string>
+    <string name="photo_of_the_day_stub">Photo of the day</string>
+    <string name="empty_link">Nothing to show: link is empty!</string>
+    <string name="loading">Loading picture data…</string>
+    <string name="search_wiki">Поиск в Википедии</string>
+    <string name="wiki_helper_text">Длина запроса - не более 20 символов!</string>
+    <string name="favourite">Favorites</string>
+    <string name="settings">Settings</string>
+    <string name="to_screen_one">Go to screen one</string>
+    <string name="to_screen_two">Go to screen two</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="day_before_yesterday">Day before yesterday</string>
+    <string name="date_to_choose">Choose date of the picture</string>
+    <string name="menu_is_on">Menu is already on!</string>
+</resources>
