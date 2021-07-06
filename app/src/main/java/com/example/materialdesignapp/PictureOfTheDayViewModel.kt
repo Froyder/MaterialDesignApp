@@ -25,7 +25,7 @@ class PictureOfTheDayViewModel(
         liveDataForViewToObserve.value = PictureOfTheDayData.Loading(null)
         val apiKey: String = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {
-            PictureOfTheDayData.Error(Throwable("You need API key"))
+            PictureOfTheDayData.Error(Throwable("You need an API key"))
         } else {
             retrofitImpl.getRetrofitImpl().getPictureOfTheDay(dateOfPicture, apiKey).enqueue(object :
                     Callback<PODServerResponseData> {

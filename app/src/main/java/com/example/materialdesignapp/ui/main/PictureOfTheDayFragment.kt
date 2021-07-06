@@ -86,6 +86,7 @@ class PictureOfTheDayFragment : Fragment() {
             R.id.app_bar_settings ->
                 if (isSettings) {
                     Toast.makeText(context, getString(R.string.menu_is_on), Toast.LENGTH_SHORT).show()
+                    isSettings = false
                 } else {
                     isSettings = true
                     activity?.supportFragmentManager?.beginTransaction()?.add(
