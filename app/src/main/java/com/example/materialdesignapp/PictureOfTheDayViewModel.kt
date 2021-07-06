@@ -21,17 +21,6 @@ class PictureOfTheDayViewModel(
         return liveDataForViewToObserve
     }
 
-    fun getDate (): String {
-        val cal = Calendar.getInstance()
-        val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.UK)
-        println("Today date is " + dateFormat.format(cal.time))
-
-        //cal.add(Calendar.DATE, -1)
-        //cal.add(Calendar.DATE, -2)
-
-        return dateFormat.format(cal.time)
-    }
-
     private fun sendServerRequest(dateOfPicture : String) {
         liveDataForViewToObserve.value = PictureOfTheDayData.Loading(null)
         val apiKey: String = BuildConfig.NASA_API_KEY
