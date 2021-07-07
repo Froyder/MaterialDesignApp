@@ -1,4 +1,4 @@
-package com.example.materialdesignapp.ui.main
+package com.example.materialdesignapp.ui.view
 
 import android.content.Intent
 import android.net.Uri
@@ -13,8 +13,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import coil.api.load
 import com.example.materialdesignapp.MainActivity
-import com.example.materialdesignapp.PictureOfTheDayData
-import com.example.materialdesignapp.PictureOfTheDayViewModel
+import com.example.materialdesignapp.viewmodel.PictureOfTheDayData
+import com.example.materialdesignapp.viewmodel.PictureOfTheDayViewModel
 import com.example.materialdesignapp.R
 import com.example.materialdesignapp.databinding.MainFragmentBinding
 import com.google.android.material.bottomappbar.BottomAppBar
@@ -147,11 +147,11 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     private fun showSuccess(url: String, data: PictureOfTheDayData.Success) {
-        binding.imageView.load(url) {
-            lifecycle(viewLifecycleOwner)
-            error(R.drawable.ic_no_photo_vector)
-            placeholder(R.drawable.ic_no_photo_vector)
-        }
+            binding.imageView.load(url) {
+                lifecycle(viewLifecycleOwner)
+                error(R.drawable.ic_no_photo_vector)
+                placeholder(R.drawable.ic_no_photo_vector)
+            }
 
 //        binding.imageView.setOnClickListener(){
 //            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED

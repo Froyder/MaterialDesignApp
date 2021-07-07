@@ -1,4 +1,4 @@
-package com.example.materialdesignapp.ui.main
+package com.example.materialdesignapp.ui.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.materialdesignapp.R
 import com.example.materialdesignapp.databinding.BottomNavigationLayoutBinding
-import com.example.materialdesignapp.databinding.MainFragmentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {

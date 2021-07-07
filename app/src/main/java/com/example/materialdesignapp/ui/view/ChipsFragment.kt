@@ -1,4 +1,4 @@
-package com.example.materialdesignapp.ui.main
+package com.example.materialdesignapp.ui.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.example.materialdesignapp
+package com.example.materialdesignapp.viewmodel
 
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor

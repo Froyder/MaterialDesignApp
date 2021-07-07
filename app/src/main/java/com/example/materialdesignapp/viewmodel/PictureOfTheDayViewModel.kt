@@ -1,18 +1,17 @@
-package com.example.materialdesignapp
+package com.example.materialdesignapp.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.materialdesignapp.BuildConfig
+import com.example.materialdesignapp.model.PODServerResponseData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 class PictureOfTheDayViewModel(
-        private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
-        private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
+    private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
+    private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
 ) :
     ViewModel() {
 
@@ -31,20 +30,20 @@ class PictureOfTheDayViewModel(
                     Callback<PODServerResponseData> {
 
                 override fun onResponse(
-                        call: Call<PODServerResponseData>,
-                        response: Response<PODServerResponseData>
+                    call: Call<PODServerResponseData>,
+                    response: Response<PODServerResponseData>
                 ) {
                     if (response.isSuccessful && response.body() != null) {
                         liveDataForViewToObserve.value =
-                                PictureOfTheDayData.Success(response.body()!!)
+                            PictureOfTheDayData.Success(response.body()!!)
                     } else {
                         val message = response.message()
                         if (message.isNullOrEmpty()) {
                             liveDataForViewToObserve.value =
-                                    PictureOfTheDayData.Error(Throwable("Unidentified error"))
+                                PictureOfTheDayData.Error(Throwable("Unidentified error"))
                         } else {
                             liveDataForViewToObserve.value =
-                                    PictureOfTheDayData.Error(Throwable(message))
+                                PictureOfTheDayData.Error(Throwable(message))
                         }
                     }
                 }

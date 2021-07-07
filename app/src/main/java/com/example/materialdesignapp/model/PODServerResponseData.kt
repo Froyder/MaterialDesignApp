@@ -1,4 +1,4 @@
-package com.example.materialdesignapp
+package com.example.materialdesignapp.model
 
 import com.google.gson.annotations.SerializedName
 

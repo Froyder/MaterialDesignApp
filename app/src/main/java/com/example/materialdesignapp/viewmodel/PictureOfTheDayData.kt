@@ -1,4 +1,6 @@
-package com.example.materialdesignapp
+package com.example.materialdesignapp.viewmodel
+
+import com.example.materialdesignapp.model.PODServerResponseData
 
 sealed class PictureOfTheDayData {
     data class Success(val serverResponseData: PODServerResponseData) : PictureOfTheDayData()

@@ -2,7 +2,7 @@ package com.example.materialdesignapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.materialdesignapp.ui.main.PictureOfTheDayFragment
+import com.example.materialdesignapp.ui.view.PictureOfTheDayFragment
 
 class MainActivity : AppCompatActivity() {
 
