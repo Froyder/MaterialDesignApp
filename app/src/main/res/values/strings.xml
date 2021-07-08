@@ -14,4 +14,5 @@
     <string name="day_before_yesterday">Day before yesterday</string>
     <string name="date_to_choose">Choose date of the picture</string>
     <string name="menu_is_on">Menu is already on!</string>
+    <string name="date">Date</string>
 </resources>

@@ -43,9 +43,9 @@ class ChipsFragment : DialogFragment() {
         }
     }
 
-    fun getDate (date : String): String {
+    private fun getDate (date : String): String {
         val cal = Calendar.getInstance()
-        val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.UK)
+        val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
         when (date) {
             "Today" -> cal.add(Calendar.DATE, 0)
@@ -54,10 +54,5 @@ class ChipsFragment : DialogFragment() {
         }
 
         return dateFormat.format(cal.time)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
     }
 }

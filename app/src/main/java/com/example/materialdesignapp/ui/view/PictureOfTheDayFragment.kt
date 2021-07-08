@@ -28,7 +28,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     companion object {
         private var isMain = true
-        private var isSettings = false
+        private var isDateSettings = false
         fun newInstance() = PictureOfTheDayFragment()
     }
 
@@ -50,7 +50,7 @@ class PictureOfTheDayFragment : Fragment() {
             val dateOfPicture = (bundle.getString("date"))
             if (dateOfPicture != null) {
                 viewModel.getData(dateOfPicture).observe(viewLifecycleOwner, Observer<PictureOfTheDayData> { renderData(it) })
-                isSettings = false
+                isDateSettings = false
             }
         }
 
@@ -82,16 +82,15 @@ class PictureOfTheDayFragment : Fragment() {
                 }
             }
             R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
-            R.id.app_bar_search -> Toast.makeText(context, "Search", Toast.LENGTH_SHORT).show()
-            R.id.app_bar_settings ->
-                if (isSettings) {
-                    Toast.makeText(context, getString(R.string.menu_is_on), Toast.LENGTH_SHORT).show()
-                    isSettings = false
-                } else {
-                    isSettings = true
-                    activity?.supportFragmentManager?.beginTransaction()?.add(
+            R.id.app_bar_settings -> Toast.makeText(context, "Settings", Toast.LENGTH_SHORT).show()
+            R.id.app_bar_date -> if (isDateSettings) {
+                Toast.makeText(context, getString(R.string.menu_is_on), Toast.LENGTH_SHORT).show()
+                isDateSettings = false
+            } else {
+                isDateSettings = true
+                activity?.supportFragmentManager?.beginTransaction()?.add(
                         R.id.container, ChipsFragment())?.addToBackStack(null)?.commit()
-                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }
