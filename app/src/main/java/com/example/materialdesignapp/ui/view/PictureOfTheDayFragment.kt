@@ -62,11 +62,6 @@ class PictureOfTheDayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setBottomSheetBehavior(binding.bottomSheet.bottomSheetContainer)
         setBottomAppBar(binding.bottomAppBar)
-        binding.inputLayout.setEndIconOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
-            })
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -81,18 +76,40 @@ class PictureOfTheDayFragment : Fragment() {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
                 }
             }
+            R.id.app_bar_search -> showSearch()
             R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
-            R.id.app_bar_settings -> Toast.makeText(context, "Settings", Toast.LENGTH_SHORT).show()
+            R.id.app_bar_settings -> showSettings()
+
+//            R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()?.replace(
+//                    R.id.container, SettingsFragment())?.addToBackStack(null)?.commit()
+
             R.id.app_bar_date -> if (isDateSettings) {
                 Toast.makeText(context, getString(R.string.menu_is_on), Toast.LENGTH_SHORT).show()
                 isDateSettings = false
             } else {
                 isDateSettings = true
+
                 activity?.supportFragmentManager?.beginTransaction()?.add(
-                        R.id.container, ChipsFragment())?.addToBackStack(null)?.commit()
+                        R.id.container, DateFragment())?.addToBackStack(null)?.commit()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showSearch(){
+        val searchFragment = SearchFragment()
+        val manager = activity?.supportFragmentManager
+        if (manager != null) {
+            searchFragment.show(manager, "searchDialog")
+        }
+    }
+
+    private fun showSettings() {
+        val settingsFragment = SettingsFragment()
+        val manager = activity?.supportFragmentManager
+        if (manager != null) {
+            settingsFragment.show(manager, "settingsDialog")
+        }
     }
 
     private fun setBottomAppBar(view: View) {
@@ -156,6 +173,7 @@ class PictureOfTheDayFragment : Fragment() {
 //            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
 //        }
 
+        binding.imageTitle.text = data.serverResponseData.title
         binding.bottomSheet.bottomSheetDescriptionHeader.text = data.serverResponseData.title
         binding.bottomSheet.bottomSheetDescription.text = data.serverResponseData.explanation
     }

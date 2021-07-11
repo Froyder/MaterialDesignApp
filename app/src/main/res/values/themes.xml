@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MaterialDesignApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+    <style name="Main" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,6 +13,66 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:forceDarkAllowed">true</item>
+        <item name="android:colorBackground">@color/backMain</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
+        <item name="colorAccent">@color/colorAccentMain</item>
+        <item name="fontFamily">@font/raleway_regular</item>
+        <item name="font">@font/raleway_bold</item>
+        <item name="android:fontFamily">@font/raleway_regular</item>
     </style>
+
+    <style name="Alternative" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryVariant">@color/colorAdditional</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:forceDarkAllowed">true</item>
+        <item name="android:colorBackground">@color/backAlt</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/cairo</item>
+        <item name="android:fontFamily">@font/raleway_regular</item>
+    </style>
+
+    <style name="MyBottomBar" parent="Widget.MaterialComponents.ActionBar.Primary">
+        <item name="colorPrimary">?attr/colorAccent</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxStrokeColor">@color/colorAdditional</item>
+    </style>
+
+    <style name="MainButtonsStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="colorPrimary">@color/white</item>
+        <item name="android:colorBackground">@color/black</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="android:textSize">20sp</item>
+        <item name="boxStrokeColor">@color/colorAdditional</item>
+    </style>
+
+    <style name="AltButtonsStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="colorPrimary">@color/white</item>
+        <item name="android:colorBackground">@color/black</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="android:textSize">14sp</item>
+        <item name="boxStrokeColor">@color/colorAdditional</item>
+    </style>
+
+    <style name="TextViewStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_margin">15dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">21sp</item>
+    </style>
+
 </resources>

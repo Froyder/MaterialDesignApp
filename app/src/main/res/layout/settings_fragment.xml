@@ -7,22 +7,38 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/theme_TV"
+        style="@style/TextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/date_to_choose"
         android:backgroundTint="@color/colorAccent"
-        android:textSize="20sp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@id/chipGroup"
+        android:text="@string/theme_to_choose"
+        app:layout_constraintBottom_toTopOf="@id/settingsChipGroup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
     </com.google.android.material.textview.MaterialTextView>
 
+    <View
+        android:id="@+id/bottom_sheet_line"
+        android:layout_width="155dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#663b4351"
+        app:layout_constraintBottom_toTopOf="@+id/settingsChipGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/theme_TV" />
+
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
+        android:id="@+id/settingsChipGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -32,22 +48,18 @@
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+            style="@style/MainButtonsStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/day_before_yesterday" />
+            android:id="@+id/themeMainChip"
+            android:text="@string/main_theme" />
 
         <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+            style="@style/MainButtonsStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/yesterday" />
-
-        <com.google.android.material.chip.Chip
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/today" />
+            android:id="@+id/themeAlternativeChip"
+            android:text="@string/alternative_theme" />
 
     </com.google.android.material.chip.ChipGroup>
 

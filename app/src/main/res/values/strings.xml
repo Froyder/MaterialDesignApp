@@ -15,4 +15,7 @@
     <string name="date_to_choose">Choose date of the picture</string>
     <string name="menu_is_on">Menu is already on!</string>
     <string name="date">Date</string>
+    <string name="theme_to_choose">Choose application theme</string>
+    <string name="main_theme">Main</string>
+    <string name="alternative_theme">Alternative</string>
 </resources>
