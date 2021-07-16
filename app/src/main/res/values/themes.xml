@@ -69,10 +69,10 @@
 
     <style name="TextViewStyle" parent="Widget.MaterialComponents.Chip.Choice">
         <item name="android:textColor">@color/black</item>
-        <item name="android:layout_marginTop">15dp</item>
-        <item name="android:layout_margin">15dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_margin">10dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">21sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>

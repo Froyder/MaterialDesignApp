@@ -21,6 +21,24 @@ class PODRetrofitImpl {
         return podRetrofit.create(PictureOfTheDayAPI::class.java)
     }
 
+    fun getMarsRetrofitImpl(): MarsPodAPI {
+        val podRetrofit = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
+            .client(createOkHttpClient(PODInterceptor()))
+            .build()
+        return podRetrofit.create(MarsPodAPI::class.java)
+    }
+
+    fun getSatelliteRetrofitImpl(): SatelliteAPI {
+        val podRetrofit = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
+            .client(createOkHttpClient(PODInterceptor()))
+            .build()
+        return podRetrofit.create(SatelliteAPI::class.java)
+    }
+
     private fun createOkHttpClient(interceptor: Interceptor): OkHttpClient {
         val httpClient = OkHttpClient.Builder()
         httpClient.addInterceptor(interceptor)

@@ -1,12 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:backgroundTint="@color/white">
-
-    <item
-        android:id="@+id/app_bar_fav"
-        android:icon="@drawable/ic_favourite_menu"
-        android:title="@string/favourite"
-        app:showAsAction="ifRoom" />
     
     <item
         android:id="@+id/app_bar_date"
@@ -15,15 +9,15 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/app_bar_favorite"
+        android:icon="@drawable/ic_favourite_menu"
+        android:title="@string/favourite"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/app_bar_settings"
         android:icon="@drawable/ic_settings_menu"
         android:title="@string/settings"
         app:showAsAction="always" />
-
-    <item
-        android:id="@+id/app_bar_search"
-        android:icon="@drawable/ic_wikipedia"
-        android:title="@string/search_wiki"
-        app:showAsAction="ifRoom" />
 
 </menu>

@@ -1,4 +1,4 @@
-package com.example.materialdesignapp.ui.view
+package com.example.materialdesignapp.ui.view.PoD
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,7 +23,7 @@ class DateFragment : DialogFragment() {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = DateLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -38,7 +38,8 @@ class DateFragment : DialogFragment() {
                         "DATE_REQUEST",
                         bundleOf("date" to dateOfPicture)
                 )
-                activity?.supportFragmentManager?.popBackStack()
+                dialog?.cancel()
+                //activity?.supportFragmentManager?.popBackStack()
             }
         }
     }

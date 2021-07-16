@@ -54,7 +54,8 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="This lovely starfield spans some four full moons." />
+            tools:text="This lovely starfield spans some four full moons."
+            android:layout_marginBottom="?actionBarSize"/>
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

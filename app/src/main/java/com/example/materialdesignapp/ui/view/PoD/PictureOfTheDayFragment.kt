@@ -1,4 +1,4 @@
-package com.example.materialdesignapp.ui.view
+package com.example.materialdesignapp.ui.view.PoD
 
 import android.content.Intent
 import android.net.Uri
@@ -12,11 +12,15 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import coil.api.load
+import coil.api.loadAny
 import com.example.materialdesignapp.MainActivity
 import com.example.materialdesignapp.viewmodel.PictureOfTheDayData
 import com.example.materialdesignapp.viewmodel.PictureOfTheDayViewModel
 import com.example.materialdesignapp.R
 import com.example.materialdesignapp.databinding.MainFragmentBinding
+import com.example.materialdesignapp.ui.view.BottomNavigationDrawerFragment
+import com.example.materialdesignapp.ui.view.SearchFragment
+import com.example.materialdesignapp.ui.view.SettingsFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -42,14 +46,14 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
 
         setFragmentResultListener("DATE_REQUEST") { requestKey, bundle ->
             val dateOfPicture = (bundle.getString("date"))
             if (dateOfPicture != null) {
-                viewModel.getData(dateOfPicture).observe(viewLifecycleOwner, Observer<PictureOfTheDayData> { renderData(it) })
+                viewModel.getData(dateOfPicture).observe(viewLifecycleOwner, { renderData(it) })
                 isDateSettings = false
             }
         }
@@ -66,7 +70,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_bottom_bar, menu)
+        inflater.inflate(R.menu.menu_app_bar, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -77,7 +81,6 @@ class PictureOfTheDayFragment : Fragment() {
                 }
             }
             R.id.app_bar_search -> showSearch()
-            R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
             R.id.app_bar_settings -> showSettings()
 
 //            R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()?.replace(
@@ -90,7 +93,8 @@ class PictureOfTheDayFragment : Fragment() {
                 isDateSettings = true
 
                 activity?.supportFragmentManager?.beginTransaction()?.add(
-                        R.id.container, DateFragment())?.addToBackStack(null)?.commit()
+                        R.id.container, DateFragment()
+                )?.addToBackStack(null)?.commit()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -123,7 +127,7 @@ class PictureOfTheDayFragment : Fragment() {
                 binding.bottomAppBar.navigationIcon = null
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
                 binding.fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_back_fab))
-                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
+                binding.bottomAppBar.replaceMenu(R.menu.menu_app_bar_other_screen)
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             } else {
                 isMain = true
@@ -131,7 +135,7 @@ class PictureOfTheDayFragment : Fragment() {
                         ContextCompat.getDrawable(context, R.drawable.ic_hamburger_menu_bottom_bar)
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
                 binding.fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_plus_fab))
-                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
+                binding.bottomAppBar.replaceMenu(R.menu.menu_app_bar)
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
             }
         }
@@ -139,7 +143,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.getData("").observe(viewLifecycleOwner, Observer<PictureOfTheDayData> { renderData(it) })
+        viewModel.getData("").observe(viewLifecycleOwner, { renderData(it) })
     }
 
     private fun renderData(data: PictureOfTheDayData) {
@@ -162,20 +166,35 @@ class PictureOfTheDayFragment : Fragment() {
         }
     }
 
-    private fun showSuccess(url: String, data: PictureOfTheDayData.Success) {
+    private fun showSuccess(url: String, serverData: PictureOfTheDayData.Success) {
+        if (serverData.serverResponseData.mediaType == "image"){
             binding.imageView.load(url) {
                 lifecycle(viewLifecycleOwner)
                 error(R.drawable.ic_no_photo_vector)
                 placeholder(R.drawable.ic_no_photo_vector)
             }
 
-//        binding.imageView.setOnClickListener(){
-//            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-//        }
+            binding.imageView.setOnClickListener {
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            }
 
-        binding.imageTitle.text = data.serverResponseData.title
-        binding.bottomSheet.bottomSheetDescriptionHeader.text = data.serverResponseData.title
-        binding.bottomSheet.bottomSheetDescription.text = data.serverResponseData.explanation
+        } else if (serverData.serverResponseData.mediaType == "video"){
+            Toast.makeText(context, "Click Image to see Video", Toast.LENGTH_SHORT).show()
+
+            binding.imageView.loadAny(url){
+                lifecycle(viewLifecycleOwner)
+                error(R.drawable.ic_baseline_videocam_24)
+            }
+            binding.imageView.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW).apply {
+                    data = Uri.parse(serverData.serverResponseData.url.toString())
+                })
+            }
+        }
+
+        binding.imageTitle.text = serverData.serverResponseData.title
+        binding.bottomSheet.bottomSheetDescriptionHeader.text = serverData.serverResponseData.title
+        binding.bottomSheet.bottomSheetDescription.text = serverData.serverResponseData.explanation
     }
 
 }
