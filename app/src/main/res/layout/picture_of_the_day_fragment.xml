@@ -15,13 +15,15 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/image_title"
             style="@style/TextViewStyle"
-            android:hint="@string/photo_of_the_day_stub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="50dp"
+            android:hint="@string/photo_of_the_day_stub"
             app:layout_constraintBottom_toTopOf="@id/image_view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
         </com.google.android.material.textview.MaterialTextView>
 
         <com.example.materialdesignapp.model.EquilateralImageView
@@ -29,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="75dp"
             android:contentDescription="@string/photo_of_the_day_stub"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

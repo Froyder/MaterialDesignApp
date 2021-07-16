@@ -14,8 +14,13 @@ import com.example.materialdesignapp.ui.view.SettingsFragment
 import com.example.materialdesignapp.ui.view.bottom_navigation_view.PoDFragment
 import com.example.materialdesignapp.ui.view.bottom_navigation_view.MarsFragment
 import com.example.materialdesignapp.ui.view.bottom_navigation_view.SatelliteFragment
+import com.example.materialdesignapp.ui.view.bottom_navigation_view.ViewPagerAdapter
 import com.google.android.material.bottomappbar.BottomAppBar
 import kotlinx.android.synthetic.main.main_navigation_view.*
+
+private const val POD = 0
+private const val MARS = 1
+private const val SATELLITE = 2
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,52 +32,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_navigation_view)
 
+        view_pager.adapter = ViewPagerAdapter(supportFragmentManager)
+
+        setupTab()
         setSupportActionBar(app_bar)
         setFab()
         //val badge = bottom_navigation_view.getOrCreateBadge(R.id.bottom_view_mars)
-        setButtons()
+        //setButtons()
     }
 
-    private fun setButtons () {
-        bottom_navigation_view.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.bottom_view_earth -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.activity_api_bottom_container, PoDFragment())
-                        .commitAllowingStateLoss()
-                    true
-                }
-                R.id.bottom_view_mars -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.activity_api_bottom_container, MarsFragment())
-                        .commitAllowingStateLoss()
-                    true
-                }
-                R.id.bottom_view_weather -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.activity_api_bottom_container, SatelliteFragment())
-                        .commitAllowingStateLoss()
-                    true
-                }
-                else -> false
-            }
-        }
-
-        bottom_navigation_view.selectedItemId = R.id.bottom_view_earth
-
-        bottom_navigation_view.setOnNavigationItemReselectedListener { item ->
-            when (item.itemId) {
-                R.id.bottom_view_earth -> {
-                    //Item tapped
-                }
-                R.id.bottom_view_mars -> {
-                    //Item tapped
-                }
-                R.id.bottom_view_weather -> {
-                    //Item tapped
-                }
-            }
-        }
+    private fun setupTab() {
+        tab_layout.setupWithViewPager(view_pager)
+        tab_layout.getTabAt(0)?.setIcon(R.drawable.ic_earth)
+        tab_layout.getTabAt(1)?.setIcon(R.drawable.ic_mars)
+        tab_layout.getTabAt(2)?.setIcon(R.drawable.ic_system)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -118,4 +91,46 @@ class MainActivity : AppCompatActivity() {
             showSearch()
         }
     }
+
+    //    private fun setButtons () {
+//        bottom_navigation_view.setOnNavigationItemSelectedListener { item ->
+//            when (item.itemId) {
+//                R.id.bottom_view_earth -> {
+//                    supportFragmentManager.beginTransaction()
+//                        .replace(R.id.activity_api_bottom_container, PoDFragment())
+//                        .commitAllowingStateLoss()
+//                    true
+//                }
+//                R.id.bottom_view_mars -> {
+//                    supportFragmentManager.beginTransaction()
+//                        .replace(R.id.activity_api_bottom_container, MarsFragment())
+//                        .commitAllowingStateLoss()
+//                    true
+//                }
+//                R.id.bottom_view_weather -> {
+//                    supportFragmentManager.beginTransaction()
+//                        .replace(R.id.activity_api_bottom_container, SatelliteFragment())
+//                        .commitAllowingStateLoss()
+//                    true
+//                }
+//                else -> false
+//            }
+//        }
+//
+//        bottom_navigation_view.selectedItemId = R.id.bottom_view_earth
+//
+//        bottom_navigation_view.setOnNavigationItemReselectedListener { item ->
+//            when (item.itemId) {
+//                R.id.bottom_view_earth -> {
+//                    //Item tapped
+//                }
+//                R.id.bottom_view_mars -> {
+//                    //Item tapped
+//                }
+//                R.id.bottom_view_weather -> {
+//                    //Item tapped
+//                }
+//            }
+//        }
+//    }
 }
