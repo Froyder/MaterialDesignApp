@@ -9,7 +9,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import coil.api.load
 import coil.api.loadAny
@@ -18,8 +17,8 @@ import com.example.materialdesignapp.viewmodel.PictureOfTheDayData
 import com.example.materialdesignapp.viewmodel.PictureOfTheDayViewModel
 import com.example.materialdesignapp.R
 import com.example.materialdesignapp.databinding.MainFragmentBinding
-import com.example.materialdesignapp.ui.view.BottomNavigationDrawerFragment
-import com.example.materialdesignapp.ui.view.SearchFragment
+import com.example.materialdesignapp.ui.view.BND.BottomNavigationDrawerFragment
+import com.example.materialdesignapp.ui.view.fragments.SearchFragment
 import com.example.materialdesignapp.ui.view.SettingsFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior

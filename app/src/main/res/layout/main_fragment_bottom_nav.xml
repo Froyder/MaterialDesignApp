@@ -32,25 +32,17 @@
         android:layout_gravity="center"
         android:layout_marginTop="?actionBarSize"
         android:layout_marginBottom="?actionBarSize"
-        android:layout_weight="0">
-    </FrameLayout>
+        android:layout_weight="0"></FrameLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="?actionBarSize"
+        android:layout_height="wrap_content"
+        app:labelVisibilityMode="selected"
+        android:layout_gravity="top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            app:tabTextAppearance="@style/TabTextViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabGravity="fill"/>
-    </androidx.viewpager.widget.ViewPager>
+        app:menu="@menu/menu_bottom_navigation_view" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

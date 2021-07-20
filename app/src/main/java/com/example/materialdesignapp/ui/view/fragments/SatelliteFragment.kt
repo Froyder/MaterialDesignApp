@@ -1,13 +1,11 @@
-package com.example.materialdesignapp.ui.view.bottom_navigation_view
+package com.example.materialdesignapp.ui.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
 import coil.api.load
 import com.example.materialdesignapp.BuildConfig
 import com.example.materialdesignapp.R
@@ -18,7 +16,6 @@ import kotlinx.android.synthetic.main.fragment_satellite.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class SatelliteFragment : Fragment() {
 

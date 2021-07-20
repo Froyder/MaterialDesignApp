@@ -6,21 +6,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.example.materialdesignapp.ui.view.BottomNavigationDrawerFragment
+import com.example.materialdesignapp.ui.view.BND.BottomNavigationDrawerFragment
 import com.example.materialdesignapp.ui.view.PoD.DateFragment
-import com.example.materialdesignapp.ui.view.SearchFragment
+import com.example.materialdesignapp.ui.view.fragments.SearchFragment
 import com.example.materialdesignapp.ui.view.SettingsFragment
-import com.example.materialdesignapp.ui.view.bottom_navigation_view.PoDFragment
-import com.example.materialdesignapp.ui.view.bottom_navigation_view.MarsFragment
-import com.example.materialdesignapp.ui.view.bottom_navigation_view.SatelliteFragment
-import com.example.materialdesignapp.ui.view.bottom_navigation_view.ViewPagerAdapter
-import com.google.android.material.bottomappbar.BottomAppBar
-import kotlinx.android.synthetic.main.main_navigation_view.*
-
-private const val POD = 0
-private const val MARS = 1
-private const val SATELLITE = 2
+import com.example.materialdesignapp.ui.view.fragments.ViewPagerAdapter
+import kotlinx.android.synthetic.main.main_fragment_viewpager.*
+import kotlinx.android.synthetic.main.main_fragment_viewpager.app_bar
+import kotlinx.android.synthetic.main.main_fragment_viewpager.fab
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,15 +23,19 @@ class MainActivity : AppCompatActivity() {
         setTheme(sharedPref.getInt("Theme", 1))
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_navigation_view)
+        setContentView(R.layout.main_fragment_viewpager)
 
+        //main_fragment_viewpager
         view_pager.adapter = ViewPagerAdapter(supportFragmentManager)
-
         setupTab()
+
+        //main_fragment_bottom_nav
+        //setButtons()
+
         setSupportActionBar(app_bar)
         setFab()
+
         //val badge = bottom_navigation_view.getOrCreateBadge(R.id.bottom_view_mars)
-        //setButtons()
     }
 
     private fun setupTab() {
@@ -61,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
                 }
             }
-            R.id.app_bar_favorite -> Toast.makeText(this,"This function is under construction", Toast.LENGTH_SHORT).show()
+            R.id.app_bar_favorite -> Toast.makeText(this,R.string.under_construction, Toast.LENGTH_SHORT).show()
             R.id.app_bar_settings -> showSettings()
             R.id.app_bar_date -> showDate()
         }
@@ -92,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //    private fun setButtons () {
+//        private fun setButtons () {
 //        bottom_navigation_view.setOnNavigationItemSelectedListener { item ->
 //            when (item.itemId) {
 //                R.id.bottom_view_earth -> {

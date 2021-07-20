@@ -1,4 +1,4 @@
-package com.example.materialdesignapp.ui.view.bottom_navigation_view
+package com.example.materialdesignapp.ui.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
