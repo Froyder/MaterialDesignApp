@@ -15,4 +15,25 @@
     <string name="date_to_choose">Choose date of the picture</string>
     <string name="menu_is_on">Menu is already on!</string>
     <string name="date">Date</string>
+    <string name="theme_to_choose">Choose application theme</string>
+    <string name="main_theme">Main</string>
+    <string name="alternative_theme">Alternative</string>
+    <string name="earth">Earth</string>
+    <string name="mars">Mars</string>
+    <string name="picture_of_mars">Picture of Mars</string>
+    <string name="picture_by_curiosity">Picture by Curiosity</string>
+    <string name="click_image">Click image to get description</string>
+    <string name="click_video">Click here to watch video</string>
+    <string name="info">Info</string>
+    <string name="show_description">Show full description</string>
+    <string name="picture_of_the_day">Picture of the day</string>
+    <string name="mars_by_curiosity">Mars by Curiosity</string>
+    <string name="weather">Weather</string>
+    <string name="satellite">Satellite View</string>
+    <string name="moscow_view">Last picture of Moscow made by satellite</string>
+    <string name="moscow">Moscow</string>
+    <string name="omsk">Omsk</string>
+    <string name="custom">Custom</string>
+    <string name="current_pic">Latest photo by satellite</string>
+    <string name="choose_city">Choose city to see the picture</string>
 </resources>

@@ -24,24 +24,38 @@
         android:id="@+id/bottom_sheet_description_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:textColor="#000"
         android:textStyle="bold"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_line"
         tools:text="Two Clusters and a Comet" />
 
-    <TextView
-        android:id="@+id/bottom_sheet_description"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_description_header"
-        tools:text="This lovely starfield spans some four full moons." />
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_description_header">
+
+        <TextView
+            android:id="@+id/bottom_sheet_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="This lovely starfield spans some four full moons."
+            android:layout_marginBottom="?actionBarSize"/>
+    </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

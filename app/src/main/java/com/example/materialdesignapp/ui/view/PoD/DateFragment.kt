@@ -1,4 +1,4 @@
-package com.example.materialdesignapp.ui.view
+package com.example.materialdesignapp.ui.view.PoD
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,23 +8,23 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
-import com.example.materialdesignapp.databinding.ChipsLayoutBinding
+import com.example.materialdesignapp.databinding.DateLayoutBinding
 import com.google.android.material.chip.Chip
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ChipsFragment : DialogFragment() {
+class DateFragment : DialogFragment() {
 
-    private var _binding: ChipsLayoutBinding? = null
+    private var _binding: DateLayoutBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
-        _binding = ChipsLayoutBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = DateLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -38,7 +38,8 @@ class ChipsFragment : DialogFragment() {
                         "DATE_REQUEST",
                         bundleOf("date" to dateOfPicture)
                 )
-                activity?.supportFragmentManager?.popBackStack()
+                dialog?.cancel()
+                //activity?.supportFragmentManager?.popBackStack()
             }
         }
     }
