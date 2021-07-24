@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraint_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,50 +10,47 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-
-        app:layout_constraintBottom_toTopOf="@id/mars_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_gravity="center_horizontal|top">
-
-        <TextView
-            android:id="@+id/mars_rover"
-            style="@style/TextViewStyle"
-            android:hint="@string/picture_of_mars"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </TextView>
-
-        <TextView
-            android:id="@+id/mars_sol"
-            style="@style/TextViewStyle"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </TextView>
-
-        <TextView
-            android:id="@+id/mars_earth_date"
-            style="@style/TextViewStyle"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </TextView>
-
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.example.materialdesignapp.model.EquilateralImageView
             android:id="@+id/mars_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="match_parent"
             android:contentDescription="@string/photo_of_the_day_stub"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_no_photo_vector" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/mars_rover"
+            style="@style/TextViewStyle"
+            android:text="@string/push_me"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:elevation="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/mars_sol"
+            style="@style/TextViewStyle"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/mars_earth_date"
+            style="@style/TextViewStyle"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+        </androidx.appcompat.widget.AppCompatTextView>
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

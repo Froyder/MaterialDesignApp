@@ -35,6 +35,10 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                 R.id.navigation_two -> activity?.supportFragmentManager?.beginTransaction()
                     ?.replace(R.id.main_container, MotionLayoutFragment())?.addToBackStack("")
                     ?.commit()
+
+                R.id.navigation_three -> activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.main_container, AnimationsFragment())?.addToBackStack("")
+                    ?.commit()
             }
             true
         }

@@ -12,19 +12,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/photo_of_the_day_stub"
-            android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/image_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed">
         </com.google.android.material.textview.MaterialTextView>
 
         <com.example.materialdesignapp.model.EquilateralImageView
             android:id="@+id/image_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:contentDescription="@string/photo_of_the_day_stub"
             app:layout_constraintBottom_toTopOf="@+id/content_hint"
@@ -53,30 +51,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="@string/show_description"
-            android:elevation="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/content_hint" />
+            app:layout_constraintTop_toBottomOf="parent" />
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/info_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:constraint_referenced_ids="show_description,content_hint" />
-
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/bottom_coord"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:elevation="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent">
-
-                <include
-                    android:id="@+id/bottom_sheet"
-                    layout="@layout/bottom_sheet_layout" />
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.materialdesignapp.ui.view
+package com.example.materialdesignapp.ui.view.fragments
 
 import android.app.Dialog
 import android.content.Context

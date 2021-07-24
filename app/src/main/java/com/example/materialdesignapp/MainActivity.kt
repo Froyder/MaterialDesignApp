@@ -1,6 +1,11 @@
 package com.example.materialdesignapp
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -8,14 +13,18 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.materialdesignapp.ui.view.BND.BottomNavigationDrawerFragment
 import com.example.materialdesignapp.ui.view.PoD.DateFragment
-import com.example.materialdesignapp.ui.view.fragments.SearchFragment
-import com.example.materialdesignapp.ui.view.SettingsFragment
+import com.example.materialdesignapp.ui.view.ZoomOutPageTransformer
+import com.example.materialdesignapp.ui.view.fragments.SettingsFragment
 import com.example.materialdesignapp.ui.view.fragments.ViewPagerAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.main_fragment_viewpager.*
 import kotlinx.android.synthetic.main.main_fragment_viewpager.app_bar
 import kotlinx.android.synthetic.main.main_fragment_viewpager.fab
+import kotlinx.android.synthetic.main.search_layout.*
 
 class MainActivity : AppCompatActivity() {
+
+    private var isFabExpanded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -27,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         //main_fragment_viewpager
         view_pager.adapter = ViewPagerAdapter(supportFragmentManager)
+        view_pager.setPageTransformer(true, ZoomOutPageTransformer())
         setupTab()
 
         //main_fragment_bottom_nav
@@ -34,6 +44,10 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(app_bar)
         setFab()
+
+        frame_background.apply {
+            alpha = 0f
+        }
 
         //val badge = bottom_navigation_view.getOrCreateBadge(R.id.bottom_view_mars)
     }
@@ -71,11 +85,11 @@ class MainActivity : AppCompatActivity() {
         searchFragment.show(manager, "dateDialog")
     }
 
-    private fun showSearch(){
-        val searchFragment = SearchFragment()
-        val manager = supportFragmentManager
-        searchFragment.show(manager, "searchDialog")
-    }
+//    private fun showSearch(){
+//        val searchFragment = SearchFragment()
+//        val manager = supportFragmentManager
+//        searchFragment.show(manager, "searchDialog")
+//    }
 
     private fun showSettings() {
         val settingsFragment = SettingsFragment()
@@ -84,9 +98,61 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setFab () {
-        fab.setOnClickListener {
-            showSearch()
+        input_layout.setEndIconOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://en.wikipedia.org/wiki/${input_edit_text.text.toString()}")
+            })
         }
+
+        fab.setOnClickListener {
+            if (isFabExpanded) {
+                collapseFab()
+            } else {
+                expandFAB()
+            }
+        }
+    }
+
+    private fun expandFAB() {
+        isFabExpanded = true
+        ObjectAnimator.ofFloat(search_popup, "translationY", 1400f).start()
+        fab.animate()
+            .scaleXBy(0.2f)
+            .scaleYBy(0.2f)
+            .duration = 300
+
+        frame_background.animate()
+            .alpha(0.8f)
+            .setDuration(300)
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    frame_background.isClickable = true
+                }
+            })
+
+        frame_background.setOnClickListener {
+            collapseFab ()
+        }
+    }
+
+    private fun collapseFab () {
+        isFabExpanded = false
+        ObjectAnimator.ofFloat(search_popup, "translationY", -1400f).start()
+
+        fab.animate()
+            .scaleXBy(-0.2f)
+            .scaleYBy(-0.2f)
+            .duration = 300
+
+        frame_background.animate()
+            .alpha(0.0f)
+            .setDuration(300)
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    frame_background.isClickable = false
+                }
+            })
+
     }
 
 //        private fun setButtons () {

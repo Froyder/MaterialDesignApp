@@ -1,9 +1,12 @@
 package com.example.materialdesignapp.ui.view.fragments
 
 import android.os.Bundle
+import android.transition.*
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -12,17 +15,53 @@ import com.example.materialdesignapp.R
 import com.example.materialdesignapp.viewmodel.MarsPodData
 import com.example.materialdesignapp.viewmodel.MarsPodViewModel
 import kotlinx.android.synthetic.main.fragment_mars.*
+import kotlinx.android.synthetic.main.fragment_mars.constraint_container
+import kotlinx.android.synthetic.main.fragment_satellite.*
+import kotlinx.android.synthetic.main.main_fragment.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MarsFragment : Fragment() {
 
+    private var isExpanded = false
+    private var textIsVisible = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_mars, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mars_rover.setOnClickListener {
+            TransitionManager.beginDelayedTransition(mars_linear, Slide(Gravity.START))
+            textIsVisible = !textIsVisible
+            mars_rover.text = if (!textIsVisible) getString(R.string.push_me) else getString(R.string.picture_by_curiosity)
+            mars_earth_date.visibility = if (textIsVisible) View.VISIBLE else View.GONE
+            mars_sol.visibility = if (textIsVisible) View.VISIBLE else View.GONE
+            setImage()
+        }
+
+    }
+
+    private fun setImage() {
+        isExpanded = !isExpanded
+        TransitionManager.beginDelayedTransition(
+            constraint_container, TransitionSet()
+                .addTransition(ChangeBounds())
+                .addTransition(ChangeImageTransform())
+        )
+
+        val params: ViewGroup.LayoutParams = mars_image.layoutParams
+        params.height =
+            if (isExpanded) ViewGroup.LayoutParams.MATCH_PARENT else ViewGroup.LayoutParams.WRAP_CONTENT
+        mars_image.layoutParams = params
+        mars_image.scaleType =
+            if (isExpanded) ImageView.ScaleType.CENTER else ImageView.ScaleType.FIT_XY
     }
 
     private val viewModel: MarsPodViewModel by lazy {
@@ -70,7 +109,6 @@ class MarsFragment : Fragment() {
             placeholder(R.drawable.ic_no_photo_vector)
         }
 
-        mars_rover.text = getString(R.string.picture_by_curiosity)
         mars_sol.text = "Sol: ${serverData.serverResponseData.photos[0].sol}"
         mars_earth_date.text = "Earth date: " + serverData.serverResponseData.photos[0].earth_date
 

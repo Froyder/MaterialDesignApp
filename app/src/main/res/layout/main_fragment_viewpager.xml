@@ -27,30 +27,42 @@
         app:tint="#FFFFFF"
         android:contentDescription="TODO" />
 
-    <FrameLayout
-        android:id="@+id/activity_api_bottom_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginBottom="?actionBarSize">
-    </FrameLayout>
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="?actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="?actionBarSize">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
-            app:tabTextAppearance="@style/TabTextViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabGravity="fill"/>
+            app:tabGravity="fill"
+            app:tabTextAppearance="@style/TabTextViewStyle" />
     </androidx.viewpager.widget.ViewPager>
+
+    <FrameLayout
+        android:id="@+id/frame_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:clickable="false"
+        android:background="@android:color/white"
+        android:animateLayoutChanges="true"
+        android:layout_marginBottom="?actionBarSize">
+    </FrameLayout>
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:elevation="5dp"
+        android:id="@+id/search_popup"
+        layout="@layout/search_layout"
+        android:layout_marginTop="-250dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

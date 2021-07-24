@@ -19,7 +19,7 @@ import com.example.materialdesignapp.R
 import com.example.materialdesignapp.databinding.MainFragmentBinding
 import com.example.materialdesignapp.ui.view.BND.BottomNavigationDrawerFragment
 import com.example.materialdesignapp.ui.view.fragments.SearchFragment
-import com.example.materialdesignapp.ui.view.SettingsFragment
+import com.example.materialdesignapp.ui.view.fragments.SettingsFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 

@@ -8,5 +8,10 @@
             android:id="@+id/navigation_two"
             android:icon="@drawable/ic_send"
             android:title="@string/motion_fragment" />
+
+        <item
+            android:id="@+id/navigation_three"
+            android:icon="@drawable/ic_send"
+            android:title="Animations fragment" />
     </group>
 </menu>
