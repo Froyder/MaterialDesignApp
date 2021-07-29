@@ -40,7 +40,7 @@ class AddNoteFragment : Fragment(){
         chipGroup.setOnCheckedChangeListener { chipGroup, position ->
             chipGroup.findViewById<Chip>(position)?.let {
                 when (it.text.toString()) {
-                    "Need it!" -> importance = "yellow"
+                    "Need it!" -> importance = "red"
                     "Not really" -> importance = "yellow"
                     "Just forget" -> importance = "green"
                 }
