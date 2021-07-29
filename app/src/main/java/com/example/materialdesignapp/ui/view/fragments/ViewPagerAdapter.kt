@@ -1,9 +1,8 @@
-package com.example.materialdesignapp.ui.view.bottom_navigation_view
+package com.example.materialdesignapp.ui.view.fragments
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentStatePagerAdapter
 
 private const val POD_FRAGMENT = 0
 private const val MARS_FRAGMENT = 1

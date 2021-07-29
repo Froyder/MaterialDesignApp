@@ -3,10 +3,15 @@
         <item
             android:id="@+id/navigation_one"
             android:icon="@drawable/ic_archive"
-            android:title="@string/to_screen_one" />
+            android:title="@string/collapsing_fragment" />
         <item
             android:id="@+id/navigation_two"
             android:icon="@drawable/ic_send"
-            android:title="@string/to_screen_two" />
+            android:title="@string/motion_fragment" />
+
+        <item
+            android:id="@+id/navigation_three"
+            android:icon="@drawable/ic_send"
+            android:title="Animations fragment" />
     </group>
 </menu>

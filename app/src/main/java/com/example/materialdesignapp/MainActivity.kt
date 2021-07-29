@@ -1,28 +1,30 @@
 package com.example.materialdesignapp
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.example.materialdesignapp.ui.view.BottomNavigationDrawerFragment
+import com.example.materialdesignapp.ui.view.BND.BottomNavigationDrawerFragment
 import com.example.materialdesignapp.ui.view.PoD.DateFragment
-import com.example.materialdesignapp.ui.view.SearchFragment
-import com.example.materialdesignapp.ui.view.SettingsFragment
-import com.example.materialdesignapp.ui.view.bottom_navigation_view.PoDFragment
-import com.example.materialdesignapp.ui.view.bottom_navigation_view.MarsFragment
-import com.example.materialdesignapp.ui.view.bottom_navigation_view.SatelliteFragment
-import com.example.materialdesignapp.ui.view.bottom_navigation_view.ViewPagerAdapter
-import com.google.android.material.bottomappbar.BottomAppBar
-import kotlinx.android.synthetic.main.main_navigation_view.*
-
-private const val POD = 0
-private const val MARS = 1
-private const val SATELLITE = 2
+import com.example.materialdesignapp.ui.view.ZoomOutPageTransformer
+import com.example.materialdesignapp.ui.view.fragments.SettingsFragment
+import com.example.materialdesignapp.ui.view.fragments.ViewPagerAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.main_fragment_viewpager.*
+import kotlinx.android.synthetic.main.main_fragment_viewpager.app_bar
+import kotlinx.android.synthetic.main.main_fragment_viewpager.fab
+import kotlinx.android.synthetic.main.search_layout.*
 
 class MainActivity : AppCompatActivity() {
+
+    private var isFabExpanded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -30,15 +32,24 @@ class MainActivity : AppCompatActivity() {
         setTheme(sharedPref.getInt("Theme", 1))
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_navigation_view)
+        setContentView(R.layout.main_fragment_viewpager)
 
+        //main_fragment_viewpager
         view_pager.adapter = ViewPagerAdapter(supportFragmentManager)
-
+        view_pager.setPageTransformer(true, ZoomOutPageTransformer())
         setupTab()
+
+        //main_fragment_bottom_nav
+        //setButtons()
+
         setSupportActionBar(app_bar)
         setFab()
+
+        frame_background.apply {
+            alpha = 0f
+        }
+
         //val badge = bottom_navigation_view.getOrCreateBadge(R.id.bottom_view_mars)
-        //setButtons()
     }
 
     private fun setupTab() {
@@ -61,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
                 }
             }
-            R.id.app_bar_favorite -> Toast.makeText(this,"This function is under construction", Toast.LENGTH_SHORT).show()
+            R.id.app_bar_favorite -> Toast.makeText(this,R.string.under_construction, Toast.LENGTH_SHORT).show()
             R.id.app_bar_settings -> showSettings()
             R.id.app_bar_date -> showDate()
         }
@@ -74,11 +85,11 @@ class MainActivity : AppCompatActivity() {
         searchFragment.show(manager, "dateDialog")
     }
 
-    private fun showSearch(){
-        val searchFragment = SearchFragment()
-        val manager = supportFragmentManager
-        searchFragment.show(manager, "searchDialog")
-    }
+//    private fun showSearch(){
+//        val searchFragment = SearchFragment()
+//        val manager = supportFragmentManager
+//        searchFragment.show(manager, "searchDialog")
+//    }
 
     private fun showSettings() {
         val settingsFragment = SettingsFragment()
@@ -87,12 +98,64 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setFab () {
+        input_layout.setEndIconOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://en.wikipedia.org/wiki/${input_edit_text.text.toString()}")
+            })
+        }
+
         fab.setOnClickListener {
-            showSearch()
+            if (isFabExpanded) {
+                collapseFab()
+            } else {
+                expandFAB()
+            }
         }
     }
 
-    //    private fun setButtons () {
+    private fun expandFAB() {
+        isFabExpanded = true
+        ObjectAnimator.ofFloat(search_popup, "translationY", 1400f).start()
+        fab.animate()
+            .scaleXBy(0.2f)
+            .scaleYBy(0.2f)
+            .duration = 300
+
+        frame_background.animate()
+            .alpha(0.8f)
+            .setDuration(300)
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    frame_background.isClickable = true
+                }
+            })
+
+        frame_background.setOnClickListener {
+            collapseFab ()
+        }
+    }
+
+    private fun collapseFab () {
+        isFabExpanded = false
+        ObjectAnimator.ofFloat(search_popup, "translationY", -1400f).start()
+
+        fab.animate()
+            .scaleXBy(-0.2f)
+            .scaleYBy(-0.2f)
+            .duration = 300
+
+        frame_background.animate()
+            .alpha(0.0f)
+            .setDuration(300)
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    frame_background.isClickable = false
+                }
+            })
+
+    }
+
+//        private fun setButtons () {
 //        bottom_navigation_view.setOnNavigationItemSelectedListener { item ->
 //            when (item.itemId) {
 //                R.id.bottom_view_earth -> {

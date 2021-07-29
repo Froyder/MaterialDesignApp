@@ -1,13 +1,15 @@
-package com.example.materialdesignapp.ui.view.bottom_navigation_view
+package com.example.materialdesignapp.ui.view.fragments
 
+import android.graphics.Rect
 import android.os.Bundle
+import android.transition.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
+import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.example.materialdesignapp.BuildConfig
 import com.example.materialdesignapp.R
@@ -18,9 +20,10 @@ import kotlinx.android.synthetic.main.fragment_satellite.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class SatelliteFragment : Fragment() {
+
+    private var isExpanded = false
 
     private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
 
@@ -44,6 +47,8 @@ class SatelliteFragment : Fragment() {
                 }
             }
         }
+
+        recycler_view.adapter = Adapter()
     }
 
     private fun getSatelliteView(lat: String, lon: String) {
@@ -64,7 +69,6 @@ class SatelliteFragment : Fragment() {
                                 error(R.drawable.ic_no_photo_vector)
                                 placeholder(R.drawable.ic_no_photo_vector)
                             }
-
                         }
                     }
 
@@ -72,6 +76,42 @@ class SatelliteFragment : Fragment() {
                         TODO("Not yet implemented")
                     }
                 })
+            explode()
         }
+
+    private fun explode() {
+        val viewRect = Rect()
+        val explode = Explode()
+        explode.epicenterCallback = object : Transition.EpicenterCallback() {
+            override fun onGetEpicenter(transition: Transition): Rect {
+                return viewRect
+            }
+        }
+        explode.duration = 3000
+        TransitionManager.beginDelayedTransition(recycler_view, explode)
+        recycler_view.adapter = null
+    }
+
+    inner class Adapter : RecyclerView.Adapter<ViewHolder>() {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            return ViewHolder(
+                LayoutInflater.from(parent.context).inflate(
+                    R.layout.explode_item,
+                    parent,
+                    false
+                ) as View
+            )
+        }
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        }
+
+        override fun getItemCount(): Int {
+            return 16
+        }
+    }
+
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
 }
