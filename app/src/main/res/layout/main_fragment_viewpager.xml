@@ -27,6 +27,16 @@
         app:tint="#FFFFFF"
         android:contentDescription="TODO" />
 
+    <FrameLayout
+        android:id="@+id/main_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:elevation="4dp"
+        android:clickable="true"
+        android:animateLayoutChanges="true"
+        android:layout_marginBottom="?actionBarSize">
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
@@ -34,8 +44,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="?actionBarSize">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
@@ -52,8 +61,7 @@
         android:layout_gravity="center"
         android:clickable="false"
         android:background="@android:color/white"
-        android:animateLayoutChanges="true"
-        android:layout_marginBottom="?actionBarSize">
+        android:animateLayoutChanges="true">
     </FrameLayout>
 
     <include
@@ -64,5 +72,6 @@
         android:id="@+id/search_popup"
         layout="@layout/search_layout"
         android:layout_marginTop="-250dp"/>
+    </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -12,11 +12,11 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.materialdesignapp.ui.view.BND.BottomNavigationDrawerFragment
-import com.example.materialdesignapp.ui.view.PoD.DateFragment
+import com.example.materialdesignapp.ui.view.fragments.DateFragment
 import com.example.materialdesignapp.ui.view.ZoomOutPageTransformer
+import com.example.materialdesignapp.ui.view.fragments.NotesFragment
 import com.example.materialdesignapp.ui.view.fragments.SettingsFragment
 import com.example.materialdesignapp.ui.view.fragments.ViewPagerAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.main_fragment_viewpager.*
 import kotlinx.android.synthetic.main.main_fragment_viewpager.app_bar
 import kotlinx.android.synthetic.main.main_fragment_viewpager.fab
@@ -72,11 +72,25 @@ class MainActivity : AppCompatActivity() {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
                 }
             }
-            R.id.app_bar_favorite -> Toast.makeText(this,R.string.under_construction, Toast.LENGTH_SHORT).show()
+            R.id.app_bar_notes -> showNotes()
             R.id.app_bar_settings -> showSettings()
             R.id.app_bar_date -> showDate()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+
+    private fun showNotes() {
+//            supportFragmentManager.beginTransaction().replace(R.id.main_background, NotesFragment())
+//                .addToBackStack("notes_fragment")
+//                .commitAllowingStateLoss()
+
+        startActivity(
+            Intent(
+                this,
+                NotesActivity::class.java
+            )
+        )
     }
 
     private fun showDate() {

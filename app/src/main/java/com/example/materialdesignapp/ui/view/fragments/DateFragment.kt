@@ -1,4 +1,4 @@
-package com.example.materialdesignapp.ui.view.PoD
+package com.example.materialdesignapp.ui.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

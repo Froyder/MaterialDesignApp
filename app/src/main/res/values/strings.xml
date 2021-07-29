@@ -41,4 +41,10 @@
     <string name="collapsing_fragment">Go to Collapsing Toolbar Layout</string>
     <string name="motion_fragment">Go to Motion Layout</string>
     <string name="push_me">PUSH ME!</string>
+    <string name="notes">Notes</string>
+    <string name="note">Note</string>
+    <string name="add_note_title_helper">Add title of your note here</string>
+    <string name="add_note">Add note</string>
+    <string name="choose_icon">Choose icon by importance</string>
+    <string name="note_title_warning">Note title can\'t be empty!</string>
 </resources>
