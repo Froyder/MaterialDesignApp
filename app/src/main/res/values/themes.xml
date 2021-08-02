@@ -38,8 +38,7 @@
         <item name="android:colorBackground">@color/backAlt</item>
         <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="fontFamily">@font/cairo</item>
-        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="fontFamily">@font/insomnia</item>
     </style>
 
     <style name="MyBottomBar" parent="Widget.MaterialComponents.ActionBar.Primary">

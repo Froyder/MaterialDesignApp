@@ -72,12 +72,10 @@ class PoDFragment : Fragment() {
         setBottomSheetBehavior(binding.bottomSheet.bottomSheetContainer)
         binding.imageView.setOnClickListener { if (show) hideComponents() else showComponents() }
         setDescriptionText()
-        binding.showDescription.typeface = Typeface.createFromAsset(context?.assets, "SpaceQuest-Xj4o.ttf")
         //info_group.visibility = View.GONE
     }
 
     private fun setDescriptionText() {
-        binding.showDescription.typeface = Typeface.createFromAsset(context?.assets, "SpaceQuest-Xj4o.ttf")
 
         val spannable = SpannableString(getString(R.string.show_description))
         spannable.setSpan(

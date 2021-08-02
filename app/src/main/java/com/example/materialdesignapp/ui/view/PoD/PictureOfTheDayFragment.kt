@@ -12,7 +12,7 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProviders
 import coil.api.load
 import coil.api.loadAny
-import com.example.materialdesignapp.MainActivity
+import com.example.materialdesignapp.ui.view.MainActivity
 import com.example.materialdesignapp.viewmodel.PictureOfTheDayData
 import com.example.materialdesignapp.viewmodel.PictureOfTheDayViewModel
 import com.example.materialdesignapp.R

@@ -3,7 +3,7 @@ package com.example.materialdesignapp.viewmodel
 import androidx.lifecycle.MutableLiveData
 import com.example.materialdesignapp.model.Note
 
-class NotesRepository {
+class NotesProvider {
 
     companion object {
 

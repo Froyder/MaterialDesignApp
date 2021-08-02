@@ -61,7 +61,7 @@
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     app:chipIconEnabled="true"
                     app:chipIcon="@drawable/ic_note_red"
-                    android:text="Need it!"/>
+                    android:text="High"/>
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/note_yellow"
@@ -70,7 +70,7 @@
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     app:chipIconEnabled="true"
                     app:chipIcon="@drawable/ic_note_yellow"
-                    android:text="Not really"/>
+                    android:text="Normal"/>
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/note_green"
@@ -79,7 +79,7 @@
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     app:chipIconEnabled="true"
                     app:chipIcon="@drawable/ic_note_green"
-                    android:text="Just forget"/>
+                    android:text="Low"/>
 
             </com.google.android.material.chip.ChipGroup>
 

@@ -1,23 +1,22 @@
-package com.example.materialdesignapp
+package com.example.materialdesignapp.ui.view
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
-import android.graphics.Canvas
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.materialdesignapp.R
 import com.example.materialdesignapp.ui.view.BND.BottomNavigationDrawerFragment
 import com.example.materialdesignapp.ui.view.fragments.DateFragment
-import com.example.materialdesignapp.ui.view.ZoomOutPageTransformer
-import com.example.materialdesignapp.ui.view.fragments.NotesFragment
 import com.example.materialdesignapp.ui.view.fragments.SettingsFragment
 import com.example.materialdesignapp.ui.view.fragments.ViewPagerAdapter
+import com.example.materialdesignapp.viewmodel.NotesViewModel
 import kotlinx.android.synthetic.main.main_fragment_viewpager.*
 import kotlinx.android.synthetic.main.main_fragment_viewpager.app_bar
 import kotlinx.android.synthetic.main.main_fragment_viewpager.fab
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        val sharedPref = getPreferences(Context.MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("THEME", MODE_PRIVATE)
         setTheme(sharedPref.getInt("Theme", 1))
 
         super.onCreate(savedInstanceState)
