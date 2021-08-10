@@ -29,15 +29,15 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_one -> activity?.supportFragmentManager?.beginTransaction()
-                    ?.replace(R.id.main_container, CollapsingToolbarFragment())?.addToBackStack("")
+                    ?.add(R.id.main_background, CollapsingToolbarFragment())?.addToBackStack("")
                     ?.commit()
 
                 R.id.navigation_two -> activity?.supportFragmentManager?.beginTransaction()
-                    ?.replace(R.id.main_container, MotionLayoutFragment())?.addToBackStack("")
+                    ?.replace(R.id.main_background, MotionLayoutFragment())?.addToBackStack("")
                     ?.commit()
 
                 R.id.navigation_three -> activity?.supportFragmentManager?.beginTransaction()
-                    ?.replace(R.id.main_container, AnimationsFragment())?.addToBackStack("")
+                    ?.replace(R.id.main_background, AnimationsFragment())?.addToBackStack("")
                     ?.commit()
             }
             true

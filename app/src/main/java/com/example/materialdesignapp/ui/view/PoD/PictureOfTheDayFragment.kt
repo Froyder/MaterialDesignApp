@@ -12,12 +12,13 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProviders
 import coil.api.load
 import coil.api.loadAny
-import com.example.materialdesignapp.MainActivity
+import com.example.materialdesignapp.ui.view.MainActivity
 import com.example.materialdesignapp.viewmodel.PictureOfTheDayData
 import com.example.materialdesignapp.viewmodel.PictureOfTheDayViewModel
 import com.example.materialdesignapp.R
 import com.example.materialdesignapp.databinding.MainFragmentBinding
 import com.example.materialdesignapp.ui.view.BND.BottomNavigationDrawerFragment
+import com.example.materialdesignapp.ui.view.fragments.DateFragment
 import com.example.materialdesignapp.ui.view.fragments.SearchFragment
 import com.example.materialdesignapp.ui.view.fragments.SettingsFragment
 import com.google.android.material.bottomappbar.BottomAppBar

@@ -38,8 +38,7 @@
         <item name="android:colorBackground">@color/backAlt</item>
         <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="fontFamily">@font/cairo</item>
-        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="fontFamily">@font/insomnia</item>
     </style>
 
     <style name="MyBottomBar" parent="Widget.MaterialComponents.ActionBar.Primary">
@@ -81,6 +80,14 @@
         <item name="android:layout_margin">1dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="NoteTextViewStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:layout_margin">1dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
 </resources>

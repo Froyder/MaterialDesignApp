@@ -74,10 +74,10 @@ class MarsFragment : Fragment() {
         viewModel.getData(dateOfPicture).observe(viewLifecycleOwner, { renderData(it) })
     }
 
-    private fun getDate (): String {
+    private fun getDate (date : Int = -1): String {
         val cal = Calendar.getInstance()
         val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-        cal.add(Calendar.DATE, -2)
+        cal.add(Calendar.DATE, date)
         return dateFormat.format(cal.time)
     }
 
@@ -85,12 +85,19 @@ class MarsFragment : Fragment() {
         when (data) {
             is MarsPodData.Success -> {
                 val serverResponseData = data.serverResponseData
-                val url = serverResponseData.photos[0].img_src
 
-                if (url.isNullOrEmpty()) {
-                    Toast.makeText(context, "1", Toast.LENGTH_LONG).show()
+                if (!data.serverResponseData.photos.isNullOrEmpty()){
+                    val url = serverResponseData.photos[0].img_src
+
+                    if (url.isNullOrEmpty()) {
+                        Toast.makeText(context, "1", Toast.LENGTH_LONG).show()
+                    }
+                    else {
+                        showSuccess(url, data)
+                    }
                 } else {
-                    showSuccess(url, data)
+                    val dateOfPicture = getDate(-2)
+                    viewModel.getData(dateOfPicture).observe(viewLifecycleOwner, { renderData(it) })
                 }
             }
             is MarsPodData.Loading -> {

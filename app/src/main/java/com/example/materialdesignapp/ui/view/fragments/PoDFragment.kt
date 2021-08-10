@@ -1,12 +1,22 @@
 package com.example.materialdesignapp.ui.view.fragments
 
 import android.content.Intent
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Paint.ANTI_ALIAS_FLAG
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.QuoteSpan
 import android.transition.*
 import android.view.*
 import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
@@ -61,7 +71,25 @@ class PoDFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setBottomSheetBehavior(binding.bottomSheet.bottomSheetContainer)
         binding.imageView.setOnClickListener { if (show) hideComponents() else showComponents() }
+        setDescriptionText()
         //info_group.visibility = View.GONE
+    }
+
+    private fun setDescriptionText() {
+
+        val spannable = SpannableString(getString(R.string.show_description))
+        spannable.setSpan(
+            QuoteSpan(Color.GREEN, 20, 40),
+            0, spannable.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        spannable.setSpan(
+            ForegroundColorSpan(Color.RED),
+            5,9,
+            Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
+
+        binding.showDescription.setText(spannable, TextView.BufferType.SPANNABLE)
+
     }
 
     private fun hideComponents() {
@@ -127,7 +155,7 @@ class PoDFragment : Fragment() {
                 placeholder(R.drawable.ic_no_photo_vector)
             }
 
-            binding.contentHint.text = ""
+            binding.contentHint.visibility = View.GONE
             binding.showDescription.setOnClickListener {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             }
@@ -137,6 +165,8 @@ class PoDFragment : Fragment() {
                 lifecycle(viewLifecycleOwner)
                 error(R.drawable.ic_baseline_videocam_24)
             }
+
+            binding.contentHint.visibility = View.VISIBLE
             binding.contentHint.setOnClickListener {
                 startActivity(Intent(Intent.ACTION_VIEW).apply {
                     data = Uri.parse(serverData.serverResponseData.url.toString())

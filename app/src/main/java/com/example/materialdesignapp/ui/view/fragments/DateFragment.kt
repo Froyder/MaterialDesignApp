@@ -1,4 +1,4 @@
-package com.example.materialdesignapp.ui.view.PoD
+package com.example.materialdesignapp.ui.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
+import com.example.materialdesignapp.R
 import com.example.materialdesignapp.databinding.DateLayoutBinding
 import com.google.android.material.chip.Chip
 import java.text.DateFormat
@@ -49,9 +50,9 @@ class DateFragment : DialogFragment() {
         val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
         when (date) {
-            "Today" -> cal.add(Calendar.DATE, 0)
-            "Yesterday" -> cal.add(Calendar.DATE, -1)
-            "Day before yesterday" -> cal.add(Calendar.DATE, -2)
+            getString(R.string.today) -> cal.add(Calendar.DATE, 0)
+            getString(R.string.yesterday) -> cal.add(Calendar.DATE, -1)
+            getString(R.string.day_before_yesterday) -> cal.add(Calendar.DATE, -2)
         }
 
         return dateFormat.format(cal.time)

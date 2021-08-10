@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MaterialDesignApp</string>
+    <string name="app_name">Cosmos Rocks</string>
     <string name="photo_of_the_day_stub">Photo of the day</string>
     <string name="empty_link">Nothing to show: link is empty!</string>
     <string name="loading">Loading picture data…</string>
@@ -11,7 +11,7 @@
     <string name="to_screen_two">Go to screen two</string>
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
-    <string name="day_before_yesterday">Day before yesterday</string>
+    <string name="day_before_yesterday">DB yesterday</string>
     <string name="date_to_choose">Choose date of the picture</string>
     <string name="menu_is_on">Menu is already on!</string>
     <string name="date">Date</string>
@@ -41,4 +41,11 @@
     <string name="collapsing_fragment">Go to Collapsing Toolbar Layout</string>
     <string name="motion_fragment">Go to Motion Layout</string>
     <string name="push_me">PUSH ME!</string>
+    <string name="notes">Notes</string>
+    <string name="note">Note</string>
+    <string name="add_note_title_helper">Add title of your note here</string>
+    <string name="add_note">Add note</string>
+    <string name="choose_icon">Choose icon by importance</string>
+    <string name="note_title_warning">Note title can\'t be empty!</string>
+    <string name="splash_text">To Infinity and Beyond!</string>
 </resources>
