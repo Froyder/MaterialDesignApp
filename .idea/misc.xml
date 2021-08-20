@@ -3,11 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/drawable-v24/ic_favourite_menu.xml" value="0.1574074074074074" />
         <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.18432971014492755" />
         <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/layout/collapsing_fragment_layout.xml" value="0.18432971014492755" />
         <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/layout/date_layout.xml" value="0.16304347826086957" />
+        <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/layout/fragment_mars.xml" value="0.17028985507246377" />
+        <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/layout/main_activity.xml" value="0.17028985507246377" />
+        <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/layout/main_fragment.xml" value="0.17028985507246377" />
+        <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/layout/main_fragment_bottom_nav.xml" value="0.17028985507246377" />
+        <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/layout/main_fragment_viewpager.xml" value="0.17028985507246377" />
         <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/layout/notes_item.xml" value="0.16666666666666666" />
+        <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/layout/picture_of_the_day_fragment.xml" value="0.17527173913043478" />
+        <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/layout/planets_fragment.xml" value="0.17028985507246377" />
+        <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/layout/search_layout.xml" value="0.1721014492753623" />
         <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/menu/menu_app_bar.xml" value="0.25416666666666665" />
+        <entry key="..\:/CodingWithFun/MaterialDesign/MaterialDesignApp/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
